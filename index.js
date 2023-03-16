@@ -25,7 +25,7 @@ const SYMBOLS_Count = {
     "D": 8
 }
 
-// Mul bet by values of each symbol
+// Multiply bet by values of each symbol
 const SYMBOL_VALUES ={
     "A": 5,
     "B": 4,
@@ -100,15 +100,23 @@ const spin = () => {
   }
   // represent cols & rows inside slot machine
   const reels = [[],[],[]];
+
   // keep looping till its equal or greater than nos cols and rows.. then stop
   for (let i =0; i< COLS; i++){
-
+    // copy the sysmbols to another array
+    const reelSymbols = [...symbols];
+    // randomly choose index and element there then remove
     for (j = 0; j < ROWS; j++){
-
+      const randomIndex = Math.floor(Math.random() * reelSymbols.length)
+      const selectedSymbols = reelSymbols[randomIndex];
+      reels[i].push(selectedSymbols);
+      reelSymbols.splice(randomIndex, 1);
     }
   }
+  return reels;
 };
-spin();
+const reels=spin();
+console.log(reels);
 
 
 
