@@ -86,6 +86,13 @@ const getBet = (balance, lines) => {
       }
 };
 
+
+// 4. Spin the slot machine
+const spin = () => {
+
+}
+
+
 // To know current balance of user's
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
