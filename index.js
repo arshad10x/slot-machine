@@ -81,7 +81,7 @@ const getBet = (balance, lines) => {
         if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance / lines) {
           console.log("Invalid bet, try again");
         } else {
-          return bet;
+          return numberBet;
         }
       }
 };
@@ -135,7 +135,7 @@ const transpose= (reels) => {
 const printRows = (rows) =>{
   for (const row of rows){
     // A + A = AA
-    let rowString = "A";
+    let rowString = "";
     for (const [i, symbol] of row.entries()){
       rowString += symbol;
       if( i != row.lenght -1){
@@ -159,7 +159,12 @@ const getWinnings = (rows, bet, lines) => {
         break; //exit for-loop
       }
     }
+
+    if (allSame){
+      winnings += bet *SYMBOL_VALUES[symbols[0]];
+    }
   }
+  return winnings;
 }
 
 // To know current balance of user's
@@ -169,6 +174,5 @@ const bet = getBet(balance, numberOfLines);
 const reels = spin();
 const rows = transpose(reels);
 printRows(rows);
-
-
-
+const winnings = getWinnings(rows, bet, numberOfLines);
+console.log(" You won, $" + winnings.toString());
