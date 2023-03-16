@@ -13,6 +13,25 @@
 const prompt = require("prompt-sync")();
 
 
+//Slot machine global var, 
+
+const ROWS = 3;
+const COLS = 3;
+
+const SYMBOLS_Count = {
+    "A": 2,
+    "B": 4,
+    "C": 6,
+    "D": 8
+}
+
+// Mul bet by values of each symbol
+const SYMBOL_VALUES ={
+    "A": 5,
+    "B": 4,
+    "C": 3,
+    "D": 2
+} 
 
 
 
