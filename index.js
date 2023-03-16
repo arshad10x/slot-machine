@@ -99,10 +99,11 @@ const spin = () => {
     }
   }
   // represent cols & rows inside slot machine
-  const reels = [[],[],[]];
+  const reels = [];
 
   // keep looping till its equal or greater than nos cols and rows.. then stop
   for (let i =0; i< COLS; i++){
+    reels.push([]);
     // copy the sysmbols to another array
     const reelSymbols = [...symbols];
     // randomly choose index and element there then remove
@@ -115,14 +116,59 @@ const spin = () => {
   }
   return reels;
 };
-const reels=spin();
-console.log(reels);
 
+// 5. Check if user won
+const transpose= (reels) => {
+  const rows = [];
 
+  for (let i=0; i< ROWS; i++){
+    rows.push([]);
+    for (let j=0; j<COLS; j++){
+      rows[i].push(reels[j][i]);
+    }
+  }
+  return rows;
+
+};
+//  line 133-162 doubt
+
+const printRows = (rows) =>{
+  for (const row of rows){
+    // A + A = AA
+    let rowString = "A";
+    for (const [i, symbol] of row.entries()){
+      rowString += symbol;
+      if( i != row.lenght -1){
+        rowString += " | "
+      }
+    }
+    console.log(rowString);
+  }
+};
+
+// 6. Giver user their winnings
+const getWinnings = (rows, bet, lines) => {
+  let winnings = 0;
+  for (let row = 0; row < lines; row++){
+    const symbols = rows[row];
+    let allSame = true;
+
+    for (const symbol of symbols){
+      if (symbol != symbols[0]){
+        allSame =false;
+        break; //exit for-loop
+      }
+    }
+  }
+}
 
 // To know current balance of user's
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
 const bet = getBet(balance, numberOfLines);
+const reels = spin();
+const rows = transpose(reels);
+printRows(rows);
+
 
 
