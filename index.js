@@ -146,7 +146,6 @@ const printRows = (rows) =>{
   }
 };
 
-// 6. Giver user their winnings
 const getWinnings = (rows, bet, lines) => {
   let winnings = 0;
   for (let row = 0; row < lines; row++){
@@ -167,12 +166,41 @@ const getWinnings = (rows, bet, lines) => {
   return winnings;
 }
 
-// To know current balance of user's
+// 6. Giver user their winnings
+const game = () => {
+  // To know current balance of user's
 let balance = deposit();
-const numberOfLines = getNumberOfLines();
-const bet = getBet(balance, numberOfLines);
-const reels = spin();
-const rows = transpose(reels);
-printRows(rows);
-const winnings = getWinnings(rows, bet, numberOfLines);
-console.log(" You won, $" + winnings.toString());
+
+while (true){
+  console.log("You have a balance of $" + balance);
+  // get nos of lines
+  const numberOfLines = getNumberOfLines();
+  // get bets
+  const bet = getBet(balance, numberOfLines);
+  // take and subtract balance from it
+  balance -= bet * numberOfLines;
+  // get reels
+  const reels = spin();
+  const rows = transpose(reels);
+  printRows(rows);
+  // get the winnings
+  const winnings = getWinnings(rows, bet, numberOfLines);
+  // add to winnings
+  balance += winnings;
+  console.log(" You won, $" + winnings.toString());
+
+  // if want's to continue
+  if (balance <= 0) {
+    console.log("You ran out of money!!")
+    break;
+  }
+
+  // Quit or continue
+  const playAgain = prompt("Do you want to play again (y/n)");
+  
+  if (playAgain != "y") break;
+  }
+};
+
+
+game();
