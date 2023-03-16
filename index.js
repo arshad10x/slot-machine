@@ -88,9 +88,27 @@ const getBet = (balance, lines) => {
 
 
 // 4. Spin the slot machine
-const spin = () => {
-    const symbols = [];
-}
+const spin = () => { 
+  const symbols = [];
+
+  // looping all entries inside of symbol_count
+  for (const [symbol, count] of Object.entries(SYMBOLS_Count)){
+    // adds as many symbols present
+    for (let i = 0; i < count; i++){
+      symbols.push(symbol)
+    }
+  }
+  // represent cols & rows inside slot machine
+  const reels = [[],[],[]];
+  // keep looping till its equal or greater than nos cols and rows.. then stop
+  for (let i =0; i< COLS; i++){
+
+    for (j = 0; j < ROWS; j++){
+
+    }
+  }
+};
+spin();
 
 
 
