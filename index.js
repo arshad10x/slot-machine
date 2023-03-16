@@ -16,6 +16,7 @@ const prompt = require("prompt-sync")();
 
 
 
+
 const deposit = () => {
 
     // while loop runs infinite loop and if goes to else part it return value.
@@ -64,6 +65,11 @@ const getBet = (balance, lines) => {
           return bet;
         }
       }
-}
+};
+
+// To know current balance of user's
+let balance = deposit();
+const numberOfLines = getNumberOfLines();
+const bet = getBet(balance, numberOfLines);
 
 
