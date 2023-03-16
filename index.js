@@ -89,7 +89,7 @@ const getBet = (balance, lines) => {
 
 // 4. Spin the slot machine
 const spin = () => {
-
+    const symbols = [];
 }
 
 
