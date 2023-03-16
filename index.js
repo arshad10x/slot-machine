@@ -93,6 +93,7 @@ const spin = () => {
 }
 
 
+
 // To know current balance of user's
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
